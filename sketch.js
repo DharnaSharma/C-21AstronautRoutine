@@ -33,7 +33,7 @@ function setup() {
   
   issbk=createSprite(width/2,height/2);
   issbk.addImage(issImg);
-  issbk.scale=0.2;
+//  issbk.scale=0.2;
   issbk.visible=false;
   
   astronaut=createSprite(width/2,height/2);
@@ -50,7 +50,7 @@ function setup() {
 
 function draw() {
   
-  background(220);
+  background("issbk");
   
   
     issbk.visible=true;
