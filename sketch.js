@@ -8,6 +8,7 @@ var agym,gymImg;
 var issbk,issImg;
 
 var astronaut,instrBtn,instrBtnImg;
+var titleP,titleImg;
 
 var gameState=PLAY;
 var PLAY=1;
@@ -26,24 +27,28 @@ function preload(){
   sleepImg=loadAnimation("images/sleep.png");
   issImg=loadImage("images/iss.png");
   instrBtnImg=loadImage("images/instruction.png");
+  titleImg=loadImage("images/title1.png");
 }
 
 function setup() {
   createCanvas(windowWidth,windowHeight);
   
-  issbk=createSprite(width/2,height/2);
+  issbk=createSprite(width/2,height/2,width,height);
   issbk.addImage(issImg);
-//  issbk.scale=0.2;
+  //issbk.scale=0.2;
   issbk.visible=false;
   
   astronaut=createSprite(width/2,height/2);
   astronaut.addAnimation("sleeping",sleepImg);
   astronaut.scale=0.08;
   
-  instrBtn=createSprite(120,100);
+  instrBtn=createSprite(120,120);
   instrBtn.addImage(instrBtnImg);
   instrBtn.visible=true;
   instrBtn.scale=0.5;
+  
+  titleP=createSprite(width/2,30);
+  titleP.addImage(titleImg);
   
   astronaut.visible=false;
 }
@@ -87,7 +92,7 @@ function draw() {
     if(keyDown("RIGHT_ARROW")){
       astronaut.addAnimation("bathing",bathImg);
       astronaut.changeAnimation("bathing");
-      astronaut.y=height/4;;
+      astronaut.y=height/4;
       astronaut.velocityX=1;
       astronaut.velocityY=1;
       
@@ -95,7 +100,7 @@ function draw() {
     if(keyDown("m")){
       astronaut.addAnimation("moving",moveImg);
       astronaut.changeAnimation("moving");
-      astronaut.y=3*height/4;;
+      astronaut.y=3*height/4;
       astronaut.velocityX=1;
       astronaut.velocityY=-1;
       
@@ -105,7 +110,7 @@ function draw() {
         astronaut.addAnimation("sleeping",sleepImg);
         astronaut.changeAnimation("sleeping");
         astronaut.x=width/3;
-        astronaut.y=height/2;;
+        astronaut.y=height/2;
         astronaut.velocityX=1;
         //astronaut.velocityY=-1
     
@@ -116,6 +121,18 @@ function draw() {
   textSize(30);
     fill("purple");
     text("Astronaut Daily Routine",width/2 - 100,30);
+   /*
+   textSize(25);
+    fill("red");
+    text("Instructions :",50,50);
+    textSize(20);
+    text("Up Arrow = Brushing :",50,75);
+    text("Down Arrow = Gyming",50,100);
+    text("Left Arrow = Eating",50,125);
+    text("Right Arrow = Bathing",50,150);
+    text("m key = Moving",50,175);
+    text("and if any other key is pressed = Sleeping",50,200);
+  */
   
   drawSprites();
   
